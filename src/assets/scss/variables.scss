@@ -1,0 +1,37 @@
+@import "function";
+
+//цвета
+
+$white: #FFFFFF;
+
+
+//шрифт
+
+%header-fonts{
+  color: #075985;
+  font-family: 'Montserrat', sans-serif !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: size(21, 1920);
+}
+
+
+
+//блоки отступы
+
+%dispacebetween{
+  display: flex;
+  justify-content: space-between;
+}
+
+%disaling{
+  display: flex;
+  align-items: center;
+}
+
+%disdirect{
+  display: flex;
+  flex-direction: column;
+}
+
+$wrapper: size(1745, 1920);
