@@ -1,24 +1,33 @@
 <template>
 	<div>
 		<Header/>
+		<main>
+			<section>
+				<div class="wrapper-section">
+					
+				</div>
+
+			</section>
+		</main>
 	</div>
 </template>
 
 <script>
 
-import Header  from '../components/Header';
+import Header from '../components/Header';
 
 export default {
 	name: "Main",
 	components: {
-        Header
-    }
+		Header
+	}
 }
 
 </script>
 
 
-<style>
-
+<style scoped lang="scss">
+@import "src/assets/scss/variables.scss";
+@import "src/assets/scss/styles.scss";
 
 </style>
