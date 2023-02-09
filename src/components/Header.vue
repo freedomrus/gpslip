@@ -100,8 +100,7 @@ header {
 	border-radius: 0 0 10px 0;
 	z-index: 10;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	padding: size(18, 1920) size(101, 1920) size(18, 1920) size(95, 1920);
 	img {
 		width: size(452, 1920);
 		height: size(100, 1920);
@@ -181,7 +180,7 @@ header {
 	}
 }
 .wrapper_header {
-	width: size(1745, 1920);
+	width: $wrapper;
 	margin: size(100, 1920) auto;
 	.header-block {
 		display: flex;
