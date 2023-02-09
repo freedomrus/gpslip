@@ -39,18 +39,18 @@
 				</div>
 				<form action="">
 					<div class="form-wrapper">
-					<span class="title-form">Оставить заявку</span>
+						<span class="title-form">Оставить заявку</span>
 
-					<input type="text" required="required">
-					<span>ФИО</span>
+						<input type="text" required="required">
+						<span>ФИО</span>
 
-					<input type="text" required="required">
-					<span>Контактный телефон</span>
+						<input type="text" required="required">
+						<span>Контактный телефон</span>
 
-					<input type="text" required="required">
-					<span>Email</span>
+						<input type="text" required="required">
+						<span>Email</span>
 
-					<input type="submit">
+						<input type="submit">
 					</div>
 				</form>
 			</div>
@@ -121,6 +121,8 @@ header {
 				align-items: center;
 				display: flex;
 				margin-left: size(180, 1920);
+				width: size(50, 1920);
+				height: size(50, 1920);
 			}
 
 			li {
@@ -171,7 +173,8 @@ header {
 				letter-spacing: 0.075em;
 				margin-bottom: size(14, 1920);
 			}
-			.header_title__small{
+
+			.header_title__small {
 				font-weight: 400;
 				font-size: size(30, 1920);
 				line-height: size(33, 1920);
@@ -179,7 +182,7 @@ header {
 			}
 		}
 
-		form{
+		form {
 			width: size(700, 1920);
 			height: size(484, 1920);
 			padding: size(25, 1920) size(121, 1920);
@@ -189,14 +192,16 @@ header {
 			//filter: blur(1px);
 			border-radius: 10px;
 			font-family: 'PT Sans', sans-serif;
-			.form-wrapper{
+
+			.form-wrapper {
 				@extend %disdirect;
 				width: size(460, 1920);
 				margin: 0 auto;
 				align-items: center;
 
 			}
-			.title-form{
+
+			.title-form {
 				font-weight: 400;
 				font-size: size(50, 1920);
 				line-height: size(65, 1920);
