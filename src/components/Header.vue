@@ -138,7 +138,7 @@ header {
 	@extend %disaling;
 	justify-content: space-between;
 	height: size(90, 1920);
-	width: size(1920, 1920);
+	width: 100%;
 	margin-top: size(24, 1920);
 	box-shadow: 0 5px 6px 5px rgba(7, 89, 133, 0.25);
 	background: $white;
