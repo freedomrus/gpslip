@@ -211,30 +211,37 @@ header {
 			background-color: transparent;
 			cursor: pointer;
 			align-self: center;
-			line-height: 1;
-			text-decoration: none;
 			text-align: center;
 			text-transform: uppercase;
 			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
+			font-weight: 600;
 			margin-top: size(40, 1920);
 			border-radius: 20px;
+			font-size: size(18, 1920);
 		}
 		.btn:hover, .btn:focus {
 			color: #fff;
-			outline: 0;
+			backdrop-filter: blur(10px);
+			width: size(310, 1920);
+			height: size(46, 1920);
+			font-size: size(22, 1920);
 		}
 		.send {
 			width: size(300, 1920);
+			height: size(46, 1920);
 			color: #fff;
+			font-weight: 600;
 			box-shadow: 0 0 40px 40px #075985 inset, 0 0 0 0 #075985;
 			-webkit-transition: all 150ms ease-in-out;
-			transition: all 150ms ease-in-out;
+			transition: all 0.35s ease-in-out;
+
 		}
 		.send:hover {
-			box-shadow: 0 0 10px 0 #075985 inset, 0 0 10px 4px #075985;
+			box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
 			color: #075985;
 			background-color: white;
+
+
 		}
 		//    FORM
 		form {
@@ -242,7 +249,7 @@ header {
 			height: size(484, 1920);
 			padding: size(25, 1920) size(45, 1920);
 			background: rgba(255, 255, 255, 0.7);
-			border: 2px solid #FFFFFF;
+			border: 1px solid #FFFFFF;
 			box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.25);
 			border-radius: 10px;
 			font-family: 'Montserrat', sans-serif;
