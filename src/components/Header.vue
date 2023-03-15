@@ -85,6 +85,7 @@ export default {
 @import "src/assets/scss/styles.scss";
 //-----header
 header {
+	width: 100%;
 	height: size(817, 1920);
 	background: url("../assets/temp/Header/fon.png") no-repeat;
 	background-size: cover;

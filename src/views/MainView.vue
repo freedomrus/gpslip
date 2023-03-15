@@ -102,68 +102,69 @@
 				<div class="wrapper-section">
 					<span class="section__title"><span>Н</span>АШИ ПАРТНЁРЫ</span>
 					<div class="our-partners">
-						<hooper class="partners-slider" :vertical="false" :mouseDrag="false" :hoverPause="false"  :playSpeed="2000" :trimWhiteSpace="true" :infinite-scroll="false" :items-to-show="4.15"    :centerMode="false"  :auto-play="true"  :transition="800" >
+
+
+						<carousel class="partner-slider" :mouse-drag="true" :perPage="4" :autoplay="true"
+						          :autoplayTimeout="3000" :loop="true" :centerMode="center" :navigationEnabled="false">
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hooperone.png" alt="">
+								<img class="hooperone" src="../assets/temp/hooperpartenrs/hooperone.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hoopertwo.png" alt="">
+								<img class="hoopertwo" src="../assets/temp/hooperpartenrs/hoopertwo.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hooperthree.png" alt="">
+								<img class="hooperthree" src="../assets/temp/hooperpartenrs/hooperthree.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hooperfour.png" alt="">
+								<img class="hooperfour" src="../assets/temp/hooperpartenrs/hooperfour.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hooperfive.png" alt="">
+								<img class="hooperfive" src="../assets/temp/hooperpartenrs/hooperfive.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hoopersix.png" alt="">
+								<img class="hoopersix" src="../assets/temp/hooperpartenrs/hoopersix.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hooperseven.png" alt="">
+								<img class="hooperseven" src="../assets/temp/hooperpartenrs/hooperseven.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hoopereight.png" alt="">
+								<img class="hoopereight" src="../assets/temp/hooperpartenrs/hoopereight.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hoopernine.png" alt="">
+								<img class="hoopernine" src="../assets/temp/hooperpartenrs/hoopernine.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hooperten.png" alt="">
+								<img class="hooperten" src="../assets/temp/hooperpartenrs/hooperten.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hoopereleven.png" alt="">
+								<img class="hoopereleven" src="../assets/temp/hooperpartenrs/hoopereleven.png" alt="">
 							</slide>
 							<slide>
-								<img src="../assets/temp/hooperpartenrs/hoopertwelve.png" alt="">
+								<img class="hoopertwelve" src="../assets/temp/hooperpartenrs/hoopertwelve.png" alt="">
 							</slide>
-							<hooper-navigation slot="hooper-addons"></hooper-navigation>
-						</hooper>
+						</carousel>
 					</div>
 				</div>
-
 			</section>
 		</main>
+		<Footer/>
 	</div>
 </template>
 
 <script>
 
 import Header from '../components/Header';
-import { Hooper, Slide, Pagination as HooperPagination, Navigation as HooperNavigation} from 'hooper';
-import 'hooper/dist/hooper.css';
+import Footer from '../components/Footer'
+import {Carousel, Slide} from 'vue-carousel';
 
 
 export default {
 	name: "Main",
 	components: {
 		Header,
-		Hooper,
-		Slide,
-		HooperPagination,
-		HooperNavigation,
+		Footer,
+		Carousel,
+		Slide
 	}
 }
 
@@ -175,6 +176,10 @@ export default {
 @import "src/assets/scss/variables.scss";
 @import "src/assets/scss/styles.scss";
 
+main{
+	width: $wrapper;
+	margin: 0 auto;
+}
 
 .wrapper-section {
 	width: $wrapper;
@@ -306,32 +311,35 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: 0.7s;
+	transition: 0.3s;
 	cursor: pointer;
 }
 
-.all-equipment span:after {
-	content: '\00bb';
-	opacity: 0;
-	transition: 0.5s;
-	right: size(-20, 1920);
-	font-size: size(24, 1920);
-	cursor: pointer;
-}
-
+//.all-equipment span:after {
+//	content: '\00bb';
+//	opacity: 0;
+//	transition: 0.5s;
+//	right: size(-20, 1920);
+//	font-size: size(24, 1920);
+//	cursor: pointer;
+//}
+//
 .all-equipment:hover {
+	font-size: size(28, 1920);
+	width: size(425, 1920);
 	box-shadow: -10px 10px 20px rgba(224, 28, 34, 0.5), 10px 0 20px rgba(6, 123, 205, 0.5);
 	transition: 0.3s;
 }
 
-.all-equipment:hover span:after {
-	opacity: 1;
-	align-items: center;
-	margin-left: size(10, 1920);
-	padding-right: size(25, 1920);
-	font-size: size(27, 1920);
-
-}
+//
+//.all-equipment:hover span:after {
+//	opacity: 1;
+//	align-items: center;
+//	margin-left: size(10, 1920);
+//	padding-right: size(25, 1920);
+//	font-size: size(27, 1920);
+//
+//}
 
 
 //SERVICES-CARDS----------------------
@@ -480,35 +488,12 @@ export default {
 }
 
 
-
 //PARTNERS-SLIDER--------------
 
-.our-partners{
+.our-partners {
 	width: size(1745, 1920);
 	margin: size(40, 1920) auto;
 }
 
-
-
-
-.partners-slider{
-
-	.hooper-slide{
-		display: flex !important;
-		justify-content: center !important;
-		align-content: center !important;
-		align-items: center !important;
-		width: size(380, 1920) !important;
-		height: size(135, 1920) !important;
-		background: #FFFFFF;
-		margin-left: size(18, 1920);
-		margin-right: size(18, 1920);
-		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
-		border-radius: 20px;
-	}
-
-
-
-}
 
 </style>
