@@ -1,6 +1,5 @@
 <template>
 	<div id="app">
-		<MainView/>
 		<router-view/>
 	</div>
 </template>
@@ -16,6 +15,10 @@ export default {
 <style lang="scss">
 @import "src/assets/scss/styles.scss";
 
+
+html {
+	scroll-behavior: smooth !important;
+}
 
 .partner-slider {
 	.VueCarousel-navigation {
@@ -53,7 +56,7 @@ export default {
 	.VueCarousel-dot-container {
 		width: size(350, 1920) !important;
 		height: size(50, 1920);
-		display: flex;
+		display: none;
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 0 !important;

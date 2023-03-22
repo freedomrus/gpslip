@@ -91,7 +91,7 @@
 		<div class="wrapper-section">
 			<div class="footer">
 				<div class="footer-logo">
-					<img src="../assets/temp/Footer/footerlogo.png" alt="">
+					<img src="../assets/temp/Footer/logo.svg" alt="">
 					<span>«Центр тахографии и мониторинга автотранспорта» © ГЛОНАСС/GPS оборудование</span>
 				</div>
 				<div class="footer-contacts">
@@ -164,7 +164,6 @@ footer{
 
 .wrapper-section {
 	width: $wrapper;
-	margin: size(80, 1920) auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -245,13 +244,16 @@ footer{
 	align-items: center;
 	justify-content: space-between;
 	width: $wrapper ;
-	margin: 0 auto;
+	margin-top: size(100, 1920);
+	margin-bottom: size(20, 1920);
+
 }
 
 .footer-logo{
-	width: size(265, 1920);
+	width: size(300, 1920);
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	font-weight: 400;
 	font-size: size(14, 1920);
 	line-height: size(20, 1920);
@@ -260,8 +262,8 @@ footer{
 		font-family: 'Montserrat', sans-serif;
 	}
 	img{
-		width: size(265, 1920);
-		height: size(92, 1920);
+		width: size(300, 1920);
+
 	}
 }
 

@@ -2,17 +2,13 @@
 	<header>
 		<div class="white-header">
 			<div class="white-header__block">
-				<img src="../assets/temp/Header/logo.png" alt="">
+				<router-link to="/" exact><img src="../assets/temp/Header/logo.svg" alt=""></router-link>
 			</div>
 			<div class="white-header__line">
 				<nav>
 					<ul>
-						<li>
-							<a href="#">Оборудование</a>
-							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
-						</li>
 						<li class="dropdown">
-							<a href="#" class="header__indent">Статьи</a>
+							<router-link to="/">Оборудование</router-link>
 							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
 							<div class="dropdown-indent">
 								<a href="#">Ссылка 1</a>
@@ -20,14 +16,23 @@
 								<a href="#">Ссылка 3</a>
 							</div>
 						</li>
-						<li>
-							<a href="#" class="header__indent">Вакансии</a>
+						<li class="dropdown">
+							<router-link to="/about#about" active-class="active" class="header__indent">Статьи</router-link>
+							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
+							<div class="dropdown-indent">
+								<router-link to="/about#about" active-class="active">О нас</router-link>
+								<a href="#">Ссылка 2</a>
+								<a href="#">Ссылка 3</a>
+							</div>
 						</li>
 						<li>
-							<a href="#" class="indent-nav">Партнёры</a>
+							<router-link to="/jobopening#jobopening" class="header__indent" active-class="active">Вакансии</router-link>
 						</li>
 						<li>
-							<a href="#" class="indent-nav">Контакты</a>
+							<router-link to="/partner#partner" class="indent-nav">Партнёры</router-link>
+						</li>
+						<li>
+							<router-link to="/contact#contact" class="indent-nav" active-class="active" >Контакты</router-link>
 						</li>
 						<li class="logo-singin">
 							<a href="#"><img src="../assets/temp/Header/singin.png" alt=""></a>
@@ -39,10 +44,10 @@
 		<div class="wrapper_header">
 			<div class="header-block">
 				<div class="header_title">
-					<span class="header_title__text">Тахографы и карты водителя в Липецке</span>
-					<span class="header_title__small">Доверьте решение вопросов команде настоящих профессионалов </span>
+					<span class="header_title__text ">Тахографы и карты водителя в Липецке</span>
+					<span class="header_title__small ">Доверьте решение вопросов команде настоящих профессионалов </span>
 				</div>
-				<form action="/">
+				<form action="/" class="">
 					<div class="form-wrapper">
 						<span class="title-form">Оставить заявку</span>
 
@@ -64,7 +69,7 @@
 							<label>Email</label>
 						</div>
 
-						<input class="btn send" type="submit">
+						<input class="sendbtn" type="submit">
 					</div>
 				</form>
 			</div>
@@ -75,12 +80,20 @@
 </template>
 
 <script>
+
 export default {
-	name: "Header"
+	name: "Header",
+	data(){
+		return{
+		}
+	}
 }
+
+
 </script>
 
 <style scoped lang="scss">
+@import "animate.css";
 @import "src/assets/scss/variables.scss";
 @import "src/assets/scss/styles.scss";
 //-----header
@@ -93,6 +106,11 @@ header {
 .white-header {
 	display: flex;
 }
+
+.active{
+	color:#E01C22 !important;
+}
+
 .white-header__block {
 	width: size(648, 1920);
 	height: size(136, 1920);
@@ -101,12 +119,20 @@ header {
 	border-radius: 0 0 10px 0;
 	z-index: 10;
 	display: flex;
-	padding: size(18, 1920) size(101, 1920) size(18, 1920) size(95, 1920);
+	padding: size(0, 1920) size(54, 1920) size(0, 1920) size(52, 1920);
 	img {
-		width: size(452, 1920);
-		height: size(100, 1920);
+		width: size(542, 1920);
+		height: size(136, 1920);
 	}
 }
+
+
+.dropdown:hover {
+	img{
+		transform: rotate(180deg);
+	}
+}
+
 .dropdown-indent {
 	display: none;
 	position: absolute;
@@ -114,6 +140,7 @@ header {
 	width: size(160,1920);
 	height: size(135, 1920);
 	box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2);
+	transition: all 500ms ease-in-out;
 	z-index: 10;
 }
 .dropdown-indent a {
@@ -124,28 +151,31 @@ header {
 .dropdown-indent a:hover{
 	color: white ;
 	background-color: #075985;
-	transition: all 150ms ease-in-out;
+	transition: all 250ms ease-in-out;
 	border-radius: 8px;
 }
-.dropdown:hover .dropdown-indent{
+.dropdown:hover .dropdown-indent {
 	display: block;
-	top:size(70, 1920);
+	top:size(90, 1920);
 	border-radius: 10px;
 	margin-left: size(15, 1920);
-	transition: all 150ms ease-in-out;
+	transition: all 500ms ease-in-out;
+	.header__arrow{
+		transform: rotate(180deg);
+	}
 }
+
 .white-header__line {
-	position: absolute;
 	@extend %disaling;
 	justify-content: space-between;
 	height: size(90, 1920);
-	width: 100%;
+	width: size(1272, 1920);
 	margin-top: size(24, 1920);
 	box-shadow: 0 5px 6px 5px rgba(7, 89, 133, 0.25);
-	background: $white;
-	z-index: 9;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 5;
 	nav {
-		margin: 0 0 0 size(787, 1920);
+		margin-left: size(139, 1920);
 		ul {
 			width: size(862, 1920);
 			@extend %dispacebetween;
@@ -165,11 +195,16 @@ header {
 				a {
 					@extend %header-fonts
 				}
+				a {
+
+				}
 				.header__arrow {
 					margin-left: size(5, 1920);
 					width: size(12, 1920);
 					height: size(10, 1920);
+					transition: all 250ms ease-in-out;
 				}
+
 				.header__indent {
 					margin-left: size(48, 1920);
 				}
@@ -180,6 +215,36 @@ header {
 		}
 	}
 }
+
+.sendbtn {
+	width: size(400, 1920 )!important;
+	height: size(50, 1920)!important;
+	margin-top: size(30, 1920)!important;
+	background: rgba(255, 255, 255, 0.8)!important;
+	border-radius: 20px!important;
+	font-family: 'Montserrat', sans-serif!important;
+	font-weight: 700!important;
+	font-size: size(25, 1920)!important;
+	line-height: size(26, 1920)!important;
+	color: #075985!important;
+	display: flex!important;
+	align-items: center!important;
+	justify-content: center!important;
+	transition: 0.3s!important;
+	cursor: pointer!important;
+}
+.sendbtn:hover {
+	font-size: size(30, 1920)!important;
+	width: size(425, 1920)!important;
+	height: size(50, 1920)!important;
+	line-height: size(30, 1920)!important;
+	box-shadow: -10px 10px 20px rgba(6, 123, 205, 0.2), 10px 0 20px rgba(6, 123, 205, 0.2)!important;
+	transition: 0.3s!important;
+
+}
+
+
+
 .wrapper_header {
 	width: $wrapper;
 	margin: size(100, 1920) auto;
@@ -208,50 +273,15 @@ header {
 			}
 		}
 		//animate button
-		.btn {
-			background-color: transparent;
-			cursor: pointer;
-			align-self: center;
-			text-align: center;
-			text-transform: uppercase;
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 600;
-			margin-top: size(40, 1920);
-			border-radius: 20px;
-			font-size: size(18, 1920);
-		}
-		.btn:hover, .btn:focus {
-			color: #fff;
-			backdrop-filter: blur(10px);
-			width: size(310, 1920);
-			height: size(46, 1920);
-			font-size: size(22, 1920);
-		}
-		.send {
-			width: size(300, 1920);
-			height: size(46, 1920);
-			color: #fff;
-			font-weight: 600;
-			box-shadow: 0 0 40px 40px #075985 inset, 0 0 0 0 #075985;
-			-webkit-transition: all 150ms ease-in-out;
-			transition: all 0.35s ease-in-out;
-
-		}
-		.send:hover {
-			box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
-			color: #075985;
-			background-color: white;
 
 
-		}
 		//    FORM
 		form {
 			width: size(650, 1920);
 			height: size(484, 1920);
 			padding: size(25, 1920) size(45, 1920);
-			background: rgba(255, 255, 255, 0.7);
-			border: 1px solid #FFFFFF;
-			box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.25);
+			background: rgba(255, 255, 255, 0.4);
+			border: 1px solid rgba(255, 255, 255, 0.2);
 			border-radius: 10px;
 			font-family: 'Montserrat', sans-serif;
 			.form-wrapper__send {
@@ -296,9 +326,7 @@ header {
 				pointer-events: none;
 				left: size(8, 1920);
 				top: size(14, 1920);
-				transition: 0.2s ease all;
-				-moz-transition: 0.2s ease all;
-				-webkit-transition: 0.2s ease all;
+				transition: 0.4s all;
 			}
 			/* active state */
 			input:focus ~ label, input:valid ~ label {
@@ -318,10 +346,9 @@ header {
 				width: 0;
 				bottom: 0;
 				position: absolute;
-				background: #075985;;
-				transition: 0.2s ease all;
-				-moz-transition: 0.2s ease all;
-				-webkit-transition: 0.2s ease all;
+				background: #075985;
+				transition: 0.4s all;
+
 			}
 			.bar:before {
 				left: 50%;
@@ -352,7 +379,7 @@ header {
 			/* ANIMATIONS ================ */
 			@-webkit-keyframes inputHighlighter {
 				from {
-					background: #075985;;
+					background: #075985;
 				}
 				to {
 					width: 0;
@@ -361,7 +388,7 @@ header {
 			}
 			@-moz-keyframes inputHighlighter {
 				from {
-					background: #075985;;
+					background: #075985;
 				}
 				to {
 					width: 0;
@@ -370,7 +397,7 @@ header {
 			}
 			@keyframes inputHighlighter {
 				from {
-					background: #075985;;
+					background: #075985;
 				}
 				to {
 					width: 0;

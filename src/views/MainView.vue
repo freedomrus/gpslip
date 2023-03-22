@@ -2,8 +2,8 @@
 	<div>
 		<Header/>
 		<main>
-			<section>
-				<div class="wrapper-section">
+			<section ref="animatedElement" class="animated my-animation-class">
+				<div class="equipmetsect wrapper-section" >
 					<span class="section__title"><span>Н</span>аше оборудование</span>
 					<div class="equipment-cards">
 						<div class="equipment-cards__block">
@@ -38,7 +38,7 @@
 				</div>
 			</section>
 
-			<section>
+			<section ref="animatedElement2" class="animated my-animation-class">
 				<div class="wrapper-section">
 					<span class="section__title"><span>У</span>слуги</span>
 					<div class="services-cards">
@@ -82,30 +82,30 @@
 				</div>
 			</section>
 
-			<section>
-				<div class="wrapper-section">
+			<section ref="animatedElement3" class="animated my-animation-class" >
+				<div class="wrapper-section" >
 					<span class="section__title"><span>О</span> НАС</span>
-					<div class="about">
+					<div class="about " >
 						<div class="about-title">
 							<p>Наша компания является Партнером и Агентом оператора государственной автоматизированной
 								информационной системы ЭРА-ГЛОНАСС АО ГЛОНАСС, официальным дистрибьютором разработчика
 								систем ГЛОНАСС/GPS оборудования ООО «Аруснави» и наделена правами продаж оборудования
 								Арнави, Navtelecom, продажа и ослуживание оборудования Департамента систем автоматизации
 								транспорта ГК "ШТРИХ-М", датчиков контроля уровня топлива Omnicomm LLS, Эскорт.</p>
-							<div class="about-button"><span>Все о нас</span></div>
+							<router-link to="/about#about"><div class="about-button"><span>Все о нас</span></div></router-link>
 						</div>
 						<img src="../assets/temp/about/about.png" alt="">
 					</div>
 				</div>
 			</section>
-			<section>
+			<section ref="animatedElement4" class="animated my-animation-class">
 				<div class="wrapper-section">
 					<span class="section__title"><span>Н</span>АШИ ПАРТНЁРЫ</span>
 					<div class="our-partners">
 
 
 						<carousel class="partner-slider" :mouse-drag="true" :perPage="4" :autoplay="true"
-						          :autoplayTimeout="3000" :loop="true" :centerMode="center" :navigationEnabled="false">
+						          :autoplayTimeout="3000" :loop="true"  :navigationEnabled="false">
 							<slide>
 								<img class="hooperone" src="../assets/temp/hooperpartenrs/hooperone.png" alt="">
 							</slide>
@@ -156,19 +156,66 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer'
 import {Carousel, Slide} from 'vue-carousel';
-
+import Preloader from "@/components/PreLoader";
+import "animate.css";
 
 export default {
 	name: "Main",
 	components: {
+		Preloader,
 		Header,
 		Footer,
 		Carousel,
 		Slide
-	}
+	},
+	mounted() {
+		window.scrollTo(0, 0);
+		const observer = new IntersectionObserver(
+			entries => {
+				if (entries[0].isIntersecting) {
+					this.$refs.animatedElement.classList.add('animate__animated', 'animate__fadeIn');
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.5 }
+		);
+		observer.observe(this.$refs.animatedElement);
+
+		const observer2 = new IntersectionObserver(
+			entries => {
+				if (entries[0].isIntersecting) {
+					this.$refs.animatedElement2.classList.add('animate__animated', 'animate__fadeInUp');
+					observer2.disconnect();
+				}
+			},
+			{ threshold: 0.5 }
+		);
+		observer2.observe(this.$refs.animatedElement2);
+
+		const observer3 = new IntersectionObserver(
+			entries => {
+				if (entries[0].isIntersecting) {
+					this.$refs.animatedElement3.classList.add('animate__animated', 'animate__fadeIn');
+					observer3.disconnect();
+				}
+			},
+			{ threshold: 0.5 }
+		);
+		observer3.observe(this.$refs.animatedElement3);
+
+		const observer4 = new IntersectionObserver(
+			entries => {
+				if (entries[0].isIntersecting) {
+					this.$refs.animatedElement4.classList.add('animate__animated', 'animate__fadeInUp');
+					observer4.disconnect();
+				}
+			},
+			{ threshold: 0.5 }
+		);
+		observer4.observe(this.$refs.animatedElement4);
+	},
+
 }
-
-
 </script>
 
 
@@ -176,14 +223,24 @@ export default {
 @import "src/assets/scss/variables.scss";
 @import "src/assets/scss/styles.scss";
 
+.animated{
+	opacity: 0;
+}
+
+
 main{
 	width: $wrapper;
 	margin: 0 auto;
 }
 
+.equipmetsect{
+	margin-top: size(20, 1920) !important;
+}
+
+
 .wrapper-section {
 	width: $wrapper;
-	margin: size(80, 1920) auto;
+	margin: size(100, 1920) auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -238,7 +295,7 @@ main{
 
 	.card-white__fon {
 		position: relative;
-		width: size(567, 1920);
+		width: size(568, 1920);
 		height: size(252, 1920);
 		opacity: 0.6;
 		box-shadow: 0 7px 50px rgba(0, 0, 0, 0.15);
@@ -343,7 +400,9 @@ main{
 
 
 //SERVICES-CARDS----------------------
-
+.services-cards__fon{
+	top: -10px;
+}
 
 .services-cards__block:hover {
 	.services-cards__fon {
