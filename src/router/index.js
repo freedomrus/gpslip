@@ -30,6 +30,17 @@ const routes = [
     name: 'PartnerView',
     component: () => import('../views/PartnerView.vue')
   },
+  {
+    path: '/equipment',
+    name: 'EquipmentView',
+    component: () => import('../views/EquipmentView.vue')
+  },
+
+  {
+    path: '/glonassequipment',
+    name: 'GlonassEqView',
+    component: () => import('../views/GlonassEqView.vue')
+  },
 
 ]
 

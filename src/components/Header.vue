@@ -8,19 +8,19 @@
 				<nav>
 					<ul>
 						<li class="dropdown">
-							<router-link to="/">Оборудование</router-link>
+							<router-link to="/equipment" active-class="active">Оборудование</router-link>
 							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
-							<div class="dropdown-indent">
-								<a href="#">Ссылка 1</a>
+							<div class="dropdown-eq">
+								<router-link to="/glonassequipment" active-class="active activeback">ГЛОНАСС/GPS ОБОРУДОВАНИЕ</router-link>
 								<a href="#">Ссылка 2</a>
 								<a href="#">Ссылка 3</a>
 							</div>
 						</li>
 						<li class="dropdown">
-							<router-link to="/about#about" active-class="active" class="header__indent">Статьи</router-link>
+							<router-link to="/about#about" active-class="active " class="header__indent">Статьи</router-link>
 							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
 							<div class="dropdown-indent">
-								<router-link to="/about#about" active-class="active">О нас</router-link>
+								<router-link to="/about#about" active-class="active activeback">О нас</router-link>
 								<a href="#">Ссылка 2</a>
 								<a href="#">Ссылка 3</a>
 							</div>
@@ -109,6 +109,18 @@ header {
 
 .active{
 	color:#E01C22 !important;
+	transition: all 300ms
+}
+
+.activeback{
+	transition: all 300ms;
+	border-left: 0 solid white;
+}
+
+.activeback:hover{
+	color: white !important;
+	border-left: 5px solid #E01C22;
+	transition: all 300ms
 }
 
 .white-header__block {
@@ -133,11 +145,45 @@ header {
 	}
 }
 
+.dropdown-eq{
+	display: none;
+	position: absolute;
+	background-color: white;
+	width: size(250,1920);
+	height: size(180, 1920);
+	box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2);
+	transition: all 500ms ease-in-out;
+	z-index: 10;
+}
+.dropdown-eq a {
+	height: size(60, 1920);
+	padding: size(12, 1920) size(16, 1920);
+	display: block;
+	text-align: left;
+	font-size: size(18, 1920) !important;
+}
+.dropdown-eq a:hover{
+	color: white;
+	background-color: #075985;
+	transition: all 300ms ease-in-out;
+	z-index: 5;
+}
+.dropdown:hover .dropdown-eq {
+	display: block;
+	top:size(90, 1920);
+	border-radius: 5px;
+	transition: all 500ms ease-in-out;
+	.header__arrow{
+		transform: rotate(180deg);
+	}
+}
+
+
 .dropdown-indent {
 	display: none;
 	position: absolute;
 	background-color: white;
-	width: size(160,1920);
+	width: size(200,1920);
 	height: size(135, 1920);
 	box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2);
 	transition: all 500ms ease-in-out;
@@ -152,14 +198,13 @@ header {
 	color: white ;
 	background-color: #075985;
 	transition: all 250ms ease-in-out;
-	border-radius: 8px;
 }
 .dropdown:hover .dropdown-indent {
 	display: block;
 	top:size(90, 1920);
-	border-radius: 10px;
 	margin-left: size(15, 1920);
 	transition: all 500ms ease-in-out;
+	border-radius: 5px;
 	.header__arrow{
 		transform: rotate(180deg);
 	}

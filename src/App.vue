@@ -16,7 +16,21 @@ export default {
 @import "src/assets/scss/styles.scss";
 
 
-html {
+html::-webkit-scrollbar {
+	width: size(10, 1920) !important;
+	background-color: white !important;
+}
+
+html::-webkit-scrollbar-thumb {
+	background: #075985 !important;
+}
+
+html::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(6,123,205,0.3) !important;
+}
+
+
+	html {
 	scroll-behavior: smooth !important;
 }
 
