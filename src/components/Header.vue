@@ -29,7 +29,7 @@
 							<router-link to="/jobopening#jobopening" class="header__indent" active-class="active">Вакансии</router-link>
 						</li>
 						<li>
-							<router-link to="/partner#partner" class="indent-nav">Партнёры</router-link>
+							<router-link to="/partner#partner" class="indent-nav" active-class="active">Партнёры</router-link>
 						</li>
 						<li>
 							<router-link to="/contact#contact" class="indent-nav" active-class="active" >Контакты</router-link>
