@@ -55,45 +55,15 @@
 					<span
 						class="header_title__small ">Доверьте решение вопросов команде настоящих профессионалов </span>
 				</div>
-				<form action="/" method="POST" @submit.prevent="submit">
-					<div class="form-wrapper">
-						<span class="title-form">Оставить заявку</span>
 
-						<div class="group">
-							<input
-								class="textinput"
-								required
-								type="text"
-								v-model="fullName"
-							>
-							<span class="bar"></span>
-							<label>ФИО</label>
-						</div>
-
-						<div class="group">
-							<input
-								class="textinput"
-								required
-								type="text"
-								v-model="phone"
-							>
-							<span class="bar"></span>
-							<label>Контактный телефон</label>
-						</div>
-
-						<div class="group">
-							<input
-								class="emailinput"
-								type="email"
-								v-model="email"
-							>
-							<span class="bar"></span>
-							<label>Email</label>
-						</div>
-
-						<button class="sendbtn" type="submit">Отправить</button>
-					</div>
-				</form>
+				<div class="form-wrapper">
+					<span class="title-form">Оставить заявку</span>
+					<button class="sendbtn" type="submit" @click="openapplication()">Открыть форму</button>
+					<ApplicationPopUp
+						v-if="application"
+						:application="application"
+						@closeapplication="application = false"/>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -102,35 +72,35 @@
 </template>
 
 <script>
+import ApplicationPopUp from "@/components/ApplicationPopUp";
 
 export default {
 	name: "Header",
+	components:{
+		ApplicationPopUp
+	},
+
+	props: ['application'],
 	data() {
 		return {
-			fullName: "",
-			phone: "",
-			email: "",
-
-			// bot config
-
-			token: "6272564398:AAGU7TVTEZqw9JiXelsimOqIOx0ooqCtDuw",
-			chatId: -702085161
-
+			application: false,
 		}
 	},
-	methods: {
-		submit() {
-			let fullMessage = `Заявка\nФИО: ${this.fullName}\nТелефон: ${this.phone}\nПочта: ${this.email}`
-			this.$http.post(`https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${this.chatId}&text=${fullMessage}`)
-				.then(response =>{
-				console.log("Успешно", response)
-					this.fullName = ''
-					this.phone = ''
-					this.email = ''
-			}, error =>{
-				console.log(error)
-			})
+
+	watch:{
+		application: function (){
+			if(this.application){
+				document.body.style.overflow = "hidden"
+				return
+			}
+			document.body.style.overflow = "auto"
 		}
+	},
+
+	methods: {
+		openapplication() {
+			this.application = true;
+		},
 	}
 }
 
@@ -325,34 +295,6 @@ header {
 	}
 }
 
-.sendbtn {
-	width: size(400, 1920) !important;
-	height: size(50, 1920) !important;
-	margin-top: size(30, 1920) !important;
-	background: rgba(255, 255, 255, 0.8) !important;
-	border-radius: 20px !important;
-	font-family: 'Montserrat', sans-serif !important;
-	font-weight: 700 !important;
-	font-size: size(25, 1920) !important;
-	line-height: size(26, 1920) !important;
-	color: #075985 !important;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	transition: 0.3s !important;
-	cursor: pointer !important;
-}
-
-.sendbtn:hover {
-	font-size: size(30, 1920) !important;
-	width: size(425, 1920) !important;
-	height: size(50, 1920) !important;
-	line-height: size(30, 1920) !important;
-	box-shadow: -10px 10px 20px rgba(6, 123, 205, 0.2), 10px 0 20px rgba(6, 123, 205, 0.2) !important;
-	transition: 0.3s !important;
-
-}
-
 
 .wrapper_header {
 	width: $wrapper;
@@ -361,6 +303,7 @@ header {
 	.header-block {
 		display: flex;
 		justify-content: space-between;
+		margin-top: size(200, 1920);
 
 		.header_title {
 			width: size(850, 1920);
@@ -386,166 +329,77 @@ header {
 			}
 		}
 
-		//animate button
-
 
 		//    FORM
-		form {
-			width: size(650, 1920);
-			height: size(484, 1920);
+
+		.form-wrapper {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
+			margin-top: size(25, 1920);
+			width: size(700, 1920);
+			height: size(200, 1920);
 			padding: size(25, 1920) size(45, 1920);
-			background: rgba(255, 255, 255, 0.4);
-			border: 1px solid rgba(255, 255, 255, 0.2);
+			background: rgba(255, 255, 255, 0.2);
 			border-radius: 10px;
-			font-family: 'Montserrat', sans-serif;
+			border: 2px solid rgba(255, 255, 255, 0.5);
+			transition: all 0.5s;
+		}
 
-			.form-wrapper__send {
-				margin-top: size(45, 1920);
-			}
-
-			.form-wrapper {
-				@extend %disdirect;
-				margin: 0 auto;
-				align-items: center;
-			}
-
+		.form-wrapper:hover{
+			transition: all 0.5s;
+			box-shadow: -5px 4px 10px 5px rgba(6, 123, 205, 0.4), 10px 0 20px rgba(6, 123, 205, 0.4);
 			.title-form {
-				font-weight: 400;
-				font-size: size(50, 1920);
+				font-family: 'Montserrat', sans-serif !important;
+				font-weight: 600;
+				font-size: size(60, 1920);
 				line-height: size(65, 1920);
-				color: #075985;
+				color: white;
+				transition: all 0.5s;
 			}
+			.sendbtn{
+				font-size: size(28, 1920) !important;
+				width: size(310, 1920) !important;
+				height: size(60, 1920) !important;
+				line-height: size(30, 1920) !important;
+				box-shadow: -10px 10px 20px rgba(6, 123, 205, 0.2), 10px 0 20px rgba(6, 123, 205, 0.2) !important;
+				transition: 0.5s !important;
 
-			//animate form
-			.group {
-				position: relative;
-				margin: size(30, 1920) 0 size(10, 1920) 0;
-			}
-
-			input {
-				font-size: size(18, 1920);
-				padding: size(10, 1920) size(10, 1920) size(10, 1920) size(5, 1920);
-				display: block;
-				width: size(460, 1920);
-				height: size(46, 1920);
-				border: none;
-				background: rgba(255, 255, 255, 0.8);
-				box-shadow: 2px 2px 6px 2px rgba(7, 89, 133, 0.5);
-				border-radius: 10px 10px 0 0;
-			}
-
-			input:focus {
-				outline: none;
-			}
-
-			/* LABEL ======================================= */
-			label {
-				color: #075985;
-				font-size: size(18, 1920);
-				font-weight: normal;
-				position: absolute;
-				pointer-events: none;
-				left: size(8, 1920);
-				top: size(14, 1920);
-				transition: 0.4s all;
-			}
-
-			/* active state */
-
-			.emailinput:focus ~ label, .emailinput:invalid ~ label {
-				top: size(-20, 1920);
-				font-size: size(16, 1920);
-				color: #075985;
-			}
-
-			.textinput:focus ~ label, .textinput:valid ~ label {
-				top: size(-20, 1920);
-				font-size: size(16, 1920);
-				color: #075985;
-			}
-
-			/* BOTTOM BARS ================================= */
-			.bar {
-				position: relative;
-				display: block;
-				width: size(460, 1920);
-			}
-
-			.bar:before, .bar:after {
-				content: '';
-				height: size(3, 1920);
-				width: 0;
-				bottom: 0;
-				position: absolute;
-				background: #075985;
-				transition: 0.4s all;
-
-			}
-
-			.bar:before {
-				left: 50%;
-			}
-
-			.bar:after {
-				right: 50%;
-			}
-
-			/* active state */
-
-
-
-
-			input:focus ~ .bar:before, input:focus ~ .bar:after {
-				width: 50%;
-			}
-
-			/* HIGHLIGHTER ================================== */
-			.highlight {
-				position: absolute;
-				height: 60%;
-				width: size(100, 1920);
-				top: 25%;
-				left: 0;
-				pointer-events: none;
-				opacity: 0.5;
-			}
-
-			/* active state */
-			input:focus ~ .highlight {
-				-webkit-animation: inputHighlighter 0.3s ease;
-				-moz-animation: inputHighlighter 0.3s ease;
-				animation: inputHighlighter 0.3s ease;
-			}
-
-			/* ANIMATIONS ================ */
-			@-webkit-keyframes inputHighlighter {
-				from {
-					background: #075985;
-				}
-				to {
-					width: 0;
-					background: transparent;
-				}
-			}
-			@-moz-keyframes inputHighlighter {
-				from {
-					background: #075985;
-				}
-				to {
-					width: 0;
-					background: transparent;
-				}
-			}
-			@keyframes inputHighlighter {
-				from {
-					background: #075985;
-				}
-				to {
-					width: 0;
-					background: transparent;
-				}
 			}
 		}
+
+		.title-form {
+			font-family: 'Montserrat', sans-serif !important;
+			font-weight: 600;
+			font-size: size(60, 1920);
+			line-height: size(65, 1920);
+			color: white;
+			transition: all 0.5s;
+		}
+
+		.sendbtn {
+			width: size(300, 1920) !important;
+			height: size(50, 1920) !important;
+			margin-top: size(30, 1920) !important;
+			background: rgba(255, 255, 255, 0.8) !important;
+			border-radius: 20px !important;
+			font-family: 'Montserrat', sans-serif !important;
+			font-weight: 700 !important;
+			font-size: size(25, 1920) !important;
+			line-height: size(26, 1920) !important;
+			color: #075985 !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			transition: 0.5s !important;
+			cursor: pointer !important;
+		}
+
+
+
 	}
 }
+
 </style>
