@@ -2,17 +2,23 @@
 	<div class="modal">
 		<div class="modal-content">
 			<div class="modal-close">
-				<svg class="modal__close" @click="closeapplication()" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><path d="M4.73317 43.5834L0.416504 39.2667L17.6832 22L0.416504 4.73335L4.73317 0.416687L21.9998 17.6834L39.2665 0.416687L43.5832 4.73335L26.3165 22L43.5832 39.2667L39.2665 43.5834L21.9998 26.3167L4.73317 43.5834Z" fill="black"/>
+				<svg class="modal__close" @click="closeapplication()" width="44" height="44" viewBox="0 0 44 44"
+				     xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M4.73317 43.5834L0.416504 39.2667L17.6832 22L0.416504 4.73335L4.73317 0.416687L21.9998 17.6834L39.2665 0.416687L43.5832 4.73335L26.3165 22L43.5832 39.2667L39.2665 43.5834L21.9998 26.3167L4.73317 43.5834Z"
+						fill="black"/>
 				</svg>
 			</div>
 			<form action="/" method="POST" @submit.prevent="submit">
 				<div class="form-wrapper">
-					<span class="title-form">Оставить заявку</span>
+					<span class="title-form">Заполните форму</span>
 					<div class="group">
 						<input
+							required
 							class="textinput"
 							type="text"
 							v-model="fullName"
+							placeholder="Иванов Иван Иванович"
 						>
 						<span class="bar"></span>
 						<label>ФИО</label>
@@ -20,6 +26,7 @@
 
 					<div class="group">
 						<input
+							required
 							class="textinput"
 							type="text"
 							v-model.trim="phone"
@@ -35,10 +42,10 @@
 
 					<div class="group">
 						<input
-							re
 							class="emailinput"
 							type="email"
 							v-model="email"
+							placeholder="ztmlipetsk@gmail.com"
 						>
 						<span class="bar"></span>
 						<label>Email</label>
@@ -60,8 +67,8 @@ export default {
 	name: "ApplicationPopUp",
 	mixins: [validationMixin],
 	props: ['application'],
-	data(){
-		return{
+	data() {
+		return {
 			fullName: "",
 			phone: "",
 			email: "",
@@ -85,7 +92,7 @@ export default {
 
 
 	methods: {
-		isNumber (e) {
+		isNumber(e) {
 			const regex = /[0-9]/
 			if (!regex.test(e.key)) {
 				e.returnValue = false;
@@ -94,8 +101,7 @@ export default {
 		},
 
 
-
-			closeapplication() {
+		closeapplication() {
 			this.$emit("closeapplication", this.application)
 		},
 		submit() {
@@ -125,6 +131,14 @@ export default {
 
 // Form
 
+.is-invalid{
+	border: 1px solid red;
+}
+.invalid-feedback{
+	color: #F3CD00;
+	margin-top: size(10, 1920);
+	font-size: size(20, 1920);
+}
 
 
 form {
@@ -143,7 +157,7 @@ form {
 	}
 
 	.title-form {
-		font-weight: 400;
+		font-weight: 600;
 		font-size: size(50, 1920);
 		line-height: size(65, 1920);
 		color: #075985;
@@ -189,27 +203,27 @@ form {
 	.emailinput:focus ~ label, .emailinput:invalid ~ label {
 		top: size(-20, 1920);
 		font-size: size(16, 1920);
-		color: white;
+		color: #075985;
 	}
 
-	.textinput:focus ~ label, .textinput:invalid ~ label {
+	.textinput:focus ~ label, .textinput:valid ~ label {
 		top: size(-20, 1920);
 		font-size: size(16, 1920);
-		color: white;
+		color: #075985;
 	}
 
-	::placeholder{
+
+	::placeholder {
 		opacity: 0;
-		transition: all 0.5s;
+		transition: all 0.2s;
 	}
 
-	.textinput:focus::placeholder {
-			opacity: 0.5;
-			color: black;
-			font-size: size(18, 1920);
-			transition: all 1s;
+	.textinput:focus::placeholder, .emailinput:focus::placeholder {
+		opacity: 0.3;
+		color: black;
+		font-size: size(18, 1920);
+		transition: all 1s;
 	}
-
 
 
 	/* BOTTOM BARS ================================= */
@@ -332,7 +346,7 @@ form {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.6);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -341,14 +355,13 @@ form {
 }
 
 
-
 .modal-content {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	width: size(800, 1920);
 	height: 60%;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.7);
 	padding: size(40, 1920);
 	border-radius: 5px;
 	overflow-y: auto !important;
@@ -358,22 +371,32 @@ form {
 
 }
 
-.modal-close{
+.modal-close {
 	display: flex;
 	justify-content: flex-end;
 	width: size(700, 1920);
 }
 
 
-.modal__close{
-	width: size(35, 1920) ;
-	height: size(35, 1920) ;
+.modal__close {
+	width: size(35, 1920);
+	height: size(35, 1920);
 	cursor: pointer;
-	path{
-		fill:white;
+
+	path {
+		fill: white;
+		transition: 0.3s;
+	}
+}
+
+.modal__close:hover {
+	path {
+		fill: #075985;
+		transition: 0.3s;
 	}
 
 }
+
 
 //.modal-content::-webkit-scrollbar {
 //	width: size(10, 1920) !important;

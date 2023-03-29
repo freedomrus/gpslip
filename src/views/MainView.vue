@@ -34,7 +34,7 @@
 							<img class="card-white__fon" src="../assets/temp/equipment/ashfon.png" alt="">
 						</div>
 					</div>
-					<div class="all-equipment"><span>Все предложения</span></div>
+					<router-link to="/equipment"><div class="all-equipment"><span>Все предложения</span></div></router-link>
 				</div>
 			</section>
 
@@ -276,8 +276,9 @@ main{
 
 .equipment-cards__block:hover {
 	.card-white__fon {
-		width: size(650, 1920);
-		opacity: 0.8;
+		width: size(568, 1920);
+		height: size(252, 1920);
+		opacity: 0.5;
 
 	}
 }
@@ -295,13 +296,13 @@ main{
 
 	.card-white__fon {
 		position: relative;
-		width: size(568, 1920);
+		width: size(650, 1920);
 		height: size(252, 1920);
-		opacity: 0.6;
 		box-shadow: 0 7px 50px rgba(0, 0, 0, 0.15);
 		object-fit: cover;
 		border-radius: 20px;
 		overflow: hidden;
+		opacity: 0.8;
 		transition: all 0.5s;
 	}
 
@@ -340,6 +341,7 @@ main{
 		margin-top: size(70, 1920);
 		z-index: 10;
 		display: flex;
+
 
 		span {
 			margin: size(30, 1920) size(94, 1920) size(30, 1920) size(20, 1920);

@@ -51,9 +51,9 @@
 		<div class="wrapper_header">
 			<div class="header-block">
 				<div class="header_title">
-					<span class="header_title__text ">Тахографы и карты водителя в Липецке</span>
-					<span
-						class="header_title__small ">Доверьте решение вопросов команде настоящих профессионалов </span>
+					<span class="header_tittle__main">Спутниковый мониторинг автотранспорта</span>
+					<span class="header_title__text">Тахографы и карты водителя в Липецке</span>
+					<span class="header_title__small">Доверьте решение вопросов команде настоящих профессионалов </span>
 				</div>
 
 				<div class="form-wrapper">
@@ -76,20 +76,19 @@ import ApplicationPopUp from "@/components/ApplicationPopUp";
 
 export default {
 	name: "Header",
-	components:{
+	components: {
 		ApplicationPopUp
 	},
 
-	props: ['application'],
 	data() {
 		return {
 			application: false,
 		}
 	},
 
-	watch:{
-		application: function (){
-			if(this.application){
+	watch: {
+		application: function () {
+			if (this.application) {
 				document.body.style.overflow = "hidden"
 				return
 			}
@@ -303,21 +302,29 @@ header {
 	.header-block {
 		display: flex;
 		justify-content: space-between;
-		margin-top: size(200, 1920);
+		margin-top: size(150, 1920);
 
 		.header_title {
 			width: size(850, 1920);
 			color: #FFFFFF;
-			align-items: center;
+			align-items: flex-start;
 			justify-content: center;
 			font-family: 'PT Sans', sans-serif;
 			@extend %disdirect;
+
+			.header_tittle__main{
+				font-weight: 400;
+				font-size: size(40, 1920);
+				line-height: size(33, 1920);
+				letter-spacing: size(5, 1920);
+				margin-bottom: size(10, 1920);
+			}
 
 			.header_title__text {
 				font-weight: 700;
 				font-size: size(76, 1920);
 				line-height: size(83, 1920);
-				letter-spacing: 0.075em;
+				letter-spacing: size(5, 1920);
 				margin-bottom: size(14, 1920);
 			}
 
@@ -325,7 +332,7 @@ header {
 				font-weight: 400;
 				font-size: size(30, 1920);
 				line-height: size(33, 1920);
-				letter-spacing: 0.075em;
+				letter-spacing: size(5, 1920);
 			}
 		}
 
@@ -338,65 +345,57 @@ header {
 			flex-direction: column;
 			align-content: center;
 			align-items: center;
-			margin-top: size(25, 1920);
-			width: size(700, 1920);
+			margin-top: size(50, 1920);
+			width: size(600, 1920);
 			height: size(200, 1920);
-			padding: size(25, 1920) size(45, 1920);
-			background: rgba(255, 255, 255, 0.2);
 			border-radius: 10px;
-			border: 2px solid rgba(255, 255, 255, 0.5);
+			box-shadow: -5px 4px 10px 5px rgba(1, 123, 205, 0.4), 6px -5px 20px rgba(224, 28, 34, 0.6);
+			//border: 2px solid rgba(255, 255, 255, 0.4);
 			transition: all 0.5s;
 		}
 
-		.form-wrapper:hover{
+		.form-wrapper:hover {
 			transition: all 0.5s;
-			box-shadow: -5px 4px 10px 5px rgba(6, 123, 205, 0.4), 10px 0 20px rgba(6, 123, 205, 0.4);
-			.title-form {
-				font-family: 'Montserrat', sans-serif !important;
-				font-weight: 600;
-				font-size: size(60, 1920);
-				line-height: size(65, 1920);
-				color: white;
-				transition: all 0.5s;
-			}
-			.sendbtn{
-				font-size: size(28, 1920) !important;
-				width: size(310, 1920) !important;
-				height: size(60, 1920) !important;
-				line-height: size(30, 1920) !important;
-				box-shadow: -10px 10px 20px rgba(6, 123, 205, 0.2), 10px 0 20px rgba(6, 123, 205, 0.2) !important;
-				transition: 0.5s !important;
-
-			}
+			box-shadow: -5px 4px 10px 5px rgba(224, 28, 34, 0.4), 6px -7px 20px rgba(1, 123, 205, 0.6) ;
 		}
-
+		//6, 123, 205, 0.4
+		//224, 28, 34, 0.4
 		.title-form {
 			font-family: 'Montserrat', sans-serif !important;
 			font-weight: 600;
 			font-size: size(60, 1920);
 			line-height: size(65, 1920);
-			color: white;
+			color: white ;
 			transition: all 0.5s;
 		}
 
 		.sendbtn {
-			width: size(300, 1920) !important;
-			height: size(50, 1920) !important;
-			margin-top: size(30, 1920) !important;
-			background: rgba(255, 255, 255, 0.8) !important;
-			border-radius: 20px !important;
-			font-family: 'Montserrat', sans-serif !important;
-			font-weight: 700 !important;
-			font-size: size(25, 1920) !important;
-			line-height: size(26, 1920) !important;
-			color: #075985 !important;
-			display: flex !important;
-			align-items: center !important;
-			justify-content: center !important;
-			transition: 0.5s !important;
-			cursor: pointer !important;
+			width: size(300, 1920) ;
+			height: size(50, 1920) ;
+			margin-top: size(30, 1920) ;
+			background: #075985 ;
+			border-radius: 20px ;
+			font-family: 'Montserrat', sans-serif ;
+			font-weight: 700 ;
+			font-size: size(25, 1920) ;
+			line-height: size(26, 1920) ;
+			color: white ;
+			display: flex ;
+			align-items: center ;
+			justify-content: center ;
+			transition: 0.5s ;
+			cursor: pointer ;
 		}
 
+		.sendbtn:hover {
+			font-size: size(28, 1920) !important;
+			width: size(310, 1920) !important;
+			height: size(50, 1920) !important;
+			line-height: size(30, 1920) !important;
+			box-shadow: -10px 10px 20px rgba(6, 123, 205, 0.2), 10px 0 20px rgba(6, 123, 205, 0.2) !important;
+			transition: 0.4s !important;
+
+		}
 
 
 	}
