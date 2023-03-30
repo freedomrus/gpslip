@@ -96,14 +96,14 @@
 				</div>
 				<div class="footer-contacts">
 					<span class="contacts-title">Офис в г. Липецк</span>
-					<div class="contacts__numbers">
-						<img src="../assets/temp/Footer/footercall.png" alt="">
-						<span class="contacts-text">+7 4742 37-94-74</span>
-					</div>
-					<div class="contacts__numbers">
-						<img src="../assets/temp/Footer/footercall.png" alt="">
-						<span class="contacts-text">+7 4742 37-94-74</span>
-					</div>
+<!--					<div class="contacts__numbers">-->
+<!--						<img src="../assets/temp/Footer/footercall.png" alt="">-->
+<!--						<span class="contacts-text">+7 4742 37-94-74</span>-->
+<!--					</div>-->
+<!--					<div class="contacts__numbers">-->
+<!--						<img src="../assets/temp/Footer/footercall.png" alt="">-->
+<!--						<span class="contacts-text">+7 4742 37-94-74</span>-->
+<!--					</div>-->
 					<div class="contacts__numbers">
 						<img src="../assets/temp/Footer/footercall.png" alt="">
 						<span class="contacts-text">+7 4742 37-94-74</span>

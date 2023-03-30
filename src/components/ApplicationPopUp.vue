@@ -9,7 +9,7 @@
 						fill="black"/>
 				</svg>
 			</div>
-			<form action="/" method="POST" @submit.prevent="submit">
+			<form ref="form" method="POST" @submit.prevent="sendEmail">
 				<div class="form-wrapper">
 					<span class="title-form">Заполните форму</span>
 					<div class="group">
@@ -42,8 +42,9 @@
 
 					<div class="group">
 						<input
+							required
 							class="emailinput"
-							type="email"
+							type="text"
 							v-model="email"
 							placeholder="ztmlipetsk@gmail.com"
 						>
@@ -62,10 +63,12 @@
 import {validationMixin} from 'vuelidate'
 import {required, minLength} from 'vuelidate/lib/validators'
 import {IMaskDirective} from 'vue-imask'
+import emailjs from 'emailjs-com';
 
 export default {
 	name: "ApplicationPopUp",
-	mixins: [validationMixin],
+	mixins: [validationMixin,],
+
 	props: ['application'],
 	data() {
 		return {
@@ -92,6 +95,42 @@ export default {
 
 
 	methods: {
+
+		sendEmail() {
+			const SERVICE_ID = 'service_gpslip'; // ID вашего сервиса emailjs
+			const TEMPLATE_ID = 'template_gpslip'; // ID вашего шаблона emailjs
+			const USER_ID = 'YMXZ3pgLifxND2caD'; // ID вашего пользователя emailjs
+
+			const params = {
+				from_name: this.fullName,
+				from_email: this.email,
+				from_phone: this.phone,
+				to_name: 'GpsLip', // Имя получателя
+			};
+
+			let fullMessage = `Заявка\nФИО: ${this.fullName}\nТелефон: ${this.phone}\nПочта: ${this.email}`
+			this.$http.post(`https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${this.chatId}&text=${fullMessage}`)
+				.then(response => {
+					console.log("Успешно", response)
+				}, error => {
+					console.log(error)
+				})
+
+			emailjs.send(SERVICE_ID, TEMPLATE_ID, params, USER_ID)
+				.then(() => {
+					console.log('Email sent successfully!');
+					this.phone = '';
+					this.fullName = '';
+					this.email = '';
+					this.closeapplication()
+				}, error => {
+					console.error('Email failed to send:', error);
+				});
+		},
+
+
+
+
 		isNumber(e) {
 			const regex = /[0-9]/
 			if (!regex.test(e.key)) {
@@ -104,18 +143,19 @@ export default {
 		closeapplication() {
 			this.$emit("closeapplication", this.application)
 		},
-		submit() {
-			let fullMessage = `Заявка\nФИО: ${this.fullName}\nТелефон: ${this.phone}\nПочта: ${this.email}`
-			this.$http.post(`https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${this.chatId}&text=${fullMessage}`)
-				.then(response => {
-					console.log("Успешно", response)
-					this.fullName = ''
-					this.phone = ''
-					this.email = ''
-				}, error => {
-					console.log(error)
-				})
-		}
+		// submit() {
+		// 	let fullMessage = `Заявка\nФИО: ${this.fullName}\nТелефон: ${this.phone}\nПочта: ${this.email}`
+		// 	this.$http.post(`https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${this.chatId}&text=${fullMessage}`)
+		// 		.then(response => {
+		// 			console.log("Успешно", response)
+		// 			this.fullName = ''
+		// 			this.phone = ''
+		// 			this.email = ''
+		// 			this.closeapplication()
+		// 		}, error => {
+		// 			console.log(error)
+		// 		})
+		// }
 
 	},
 	directives: {
@@ -160,7 +200,8 @@ form {
 		font-weight: 600;
 		font-size: size(50, 1920);
 		line-height: size(65, 1920);
-		color: #075985;
+		color: white;
+		margin-bottom: size(20, 1920);
 	}
 
 	//animate form
@@ -200,16 +241,16 @@ form {
 
 	/* active state */
 
-	.emailinput:focus ~ label, .emailinput:invalid ~ label {
+	.emailinput:focus ~ label, .emailinput:valid ~ label {
 		top: size(-20, 1920);
 		font-size: size(16, 1920);
-		color: #075985;
+		color: white;
 	}
 
 	.textinput:focus ~ label, .textinput:valid ~ label {
 		top: size(-20, 1920);
 		font-size: size(16, 1920);
-		color: #075985;
+		color: white;
 	}
 
 
@@ -253,7 +294,7 @@ form {
 	}
 
 	/* active state */
-	.emailinput:invalid ~ .bar:before, .emailinput:invalid ~ .bar:after, {
+	.emailinput:valid ~ .bar:before, .emailinput:valid ~ .bar:after, {
 		width: 50%;
 	}
 
@@ -346,12 +387,13 @@ form {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 9999 !important;
 	cursor: pointer;
+	backdrop-filter: blur(5px);
 }
 
 
@@ -361,12 +403,13 @@ form {
 	flex-direction: column;
 	width: size(800, 1920);
 	height: 60%;
-	background-color: rgba(255, 255, 255, 0.7);
+	background: linear-gradient(126.76deg, rgba(6, 123, 205, 0.4) 0%, rgba(224, 28, 34, 0.4) 100%);
+	//background-color: rgba(255, 255, 255, 0.7);
 	padding: size(40, 1920);
 	border-radius: 5px;
 	overflow-y: auto !important;
 	overflow-x: hidden !important;
-	border: 3px solid rgba(6, 123, 205, 0.3);
+	//border: 3px solid rgba(255, 255, 255, 0.5);
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
 }
@@ -398,17 +441,17 @@ form {
 }
 
 
-//.modal-content::-webkit-scrollbar {
-//	width: size(10, 1920) !important;
-//	background-color: white !important;
-//}
-//
-//.modal-content::-webkit-scrollbar-thumb {
-//	background: #075985 !important;
-//}
-//
-//.modal-content::-webkit-scrollbar-track {
-//	-webkit-box-shadow: inset 0 0 6px rgba(6,123,205,0.3) !important;
-//}
+.modal-content::-webkit-scrollbar {
+	width: size(10, 1920) !important;
+	background-color: white !important;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+	background: #075985 !important;
+}
+
+.modal-content::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(6,123,205,0.3) !important;
+}
 
 </style>

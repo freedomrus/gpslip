@@ -14,8 +14,8 @@
 								<router-link to="/glonassequipment" active-class="active activeback">ГЛОНАСС/GPS
 									ОБОРУДОВАНИЕ
 								</router-link>
-								<a href="#">Ссылка 2</a>
-								<a href="#">Ссылка 3</a>
+								<a href="#">ZTM ОБОРУДОВАНИЕ</a>
+								<a href="#">ТЕЛЬТОНИКА</a>
 							</div>
 						</li>
 						<li class="dropdown">
@@ -24,8 +24,8 @@
 							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
 							<div class="dropdown-indent">
 								<router-link to="/about#about" active-class="active activeback">О нас</router-link>
-								<a href="#">Ссылка 2</a>
-								<a href="#">Ссылка 3</a>
+								<a href="#">Постановление № 969</a>
+								<a href="#">Видеонаблюдение на транспорт</a>
 							</div>
 						</li>
 						<li>
@@ -42,10 +42,14 @@
 							</router-link>
 						</li>
 						<li class="logo-singin">
-							<a href="#"><img src="../assets/temp/Header/singin.png" alt=""></a>
+							<a href="#" @click="openinput()"><img src="../assets/temp/Header/singin.png" alt=""></a>
 						</li>
 					</ul>
 				</nav>
+				<InputPopUp
+					v-if="input"
+					:input="input"
+					@closeinput="input = false"/>
 			</div>
 		</div>
 		<div class="wrapper_header">
@@ -72,17 +76,20 @@
 </template>
 
 <script>
+import InputPopUp from "@/components/InputPopUp";
 import ApplicationPopUp from "@/components/ApplicationPopUp";
 
 export default {
 	name: "Header",
 	components: {
-		ApplicationPopUp
+		ApplicationPopUp,
+		InputPopUp,
 	},
 
 	data() {
 		return {
 			application: false,
+			input: false,
 		}
 	},
 
@@ -93,12 +100,22 @@ export default {
 				return
 			}
 			document.body.style.overflow = "auto"
+		},
+		input: function () {
+			if (this.input) {
+				document.body.style.overflow = "hidden"
+				return
+			}
+			document.body.style.overflow = "auto"
 		}
 	},
 
 	methods: {
 		openapplication() {
 			this.application = true;
+		},
+		openinput() {
+			this.input = true;
 		},
 	}
 }
@@ -203,8 +220,8 @@ header {
 	display: none;
 	position: absolute;
 	background-color: white;
-	width: size(200, 1920);
-	height: size(135, 1920);
+	width: size(240, 1920);
+	height: size(175, 1920);
 	box-shadow: 0 8px 16px 5px rgba(0, 0, 0, 0.2);
 	transition: all 500ms ease-in-out;
 	z-index: 10;

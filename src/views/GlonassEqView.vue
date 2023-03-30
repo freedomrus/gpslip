@@ -363,7 +363,7 @@ main {
 	align-items: center;
 	flex-direction: column;
 	width: size(800, 1920);
-	height: size(900, 1920);
+	height: 90%;
 	background-color: rgba(255, 255, 255, 1);
 	padding: size(40, 1920);
 	border-radius: 5px;

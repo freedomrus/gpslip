@@ -38,7 +38,7 @@ export default {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background: white;
+	background: rgb(255, 255, 255);
 	z-index: 999;
 
 
@@ -48,7 +48,7 @@ export default {
 		height: 60px;
 		width: 60px;
 		border: 3px solid transparent;
-		border-top-color: #A04668;
+		border-top-color: #254E70;
 		top: 50%;
 		left: 50%;
 		margin: -30px;
@@ -63,7 +63,7 @@ export default {
 		}
 
 		&:before{
-			border-top-color: #254E70;
+			border-top-color: #A04668;
 			top: -12px;
 			left: -12px;
 			right: -12px;
@@ -72,7 +72,7 @@ export default {
 		}
 
 		&:after{
-			border-top-color: #FFFBFE;
+			border-top-color: #A04668;
 			top: 6px;
 			left: 6px;
 			right: 6px;
