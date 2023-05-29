@@ -39,7 +39,12 @@ const routes = [
   {
     path: '/glonassequipment',
     name: 'GlonassEqView',
-    component: () => import('../views/GlonassEqView.vue')
+    component: () => import('../views/Equipment/GlonassEqView.vue')
+  },
+  {
+    path: '/ztmequipment',
+    name: 'ZtmEqView',
+    component: () => import('../views/Equipment/ZtmEqView.vue')
   },
 
 ]

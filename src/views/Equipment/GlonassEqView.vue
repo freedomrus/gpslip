@@ -9,7 +9,7 @@
 						<div class="equipment-card">
 							<span>АСН СИГНАЛ S-2652</span>
 							<div class="card-block">
-								<img src="../assets/temp/eqview/glonass.svg" alt="">
+								<img src="../../assets/temp/eqview/glonass.svg" alt="">
 								<p>Аппаратура спутниковой навигации (АСН) СИГНАЛ S-2652 прошла все испытания, в подтверждение чего, был выдан сертификат соответствия требованиям ТР ТС 018/2011 "О безопасности колесных транспортных средств". А это значит, что на рынке мониторинга транспорта появилось еще одно устройство, установку которого можно производить в рамках Постановления Правительства РФ №153!
 								</p>
 								<div class="card__button"  @click="shows2652()">Подробнее</div>
@@ -19,7 +19,7 @@
 						<div class="modal " v-if="s2652" >
 							<div class="modal-content">
 								<div class="modal-block">
-									<img src="../assets/temp/eqview/s2652.svg" alt="">
+									<img src="../../assets/temp/eqview/s2652.svg" alt="">
 									<span>ОСНОВНЫЕ ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ АСН СИГНАЛ S-2652:</span>
 									<div class="block-text">
 										<ul>
@@ -51,7 +51,7 @@
 						<div class="equipment-card">
 							<span>НАВИГАЦИОННЫЙ КОНТРОЛЛЕР ARNAVI 4</span>
 							<div class="card-block">
-								<img class="block-ztm" src="../assets/temp/eqview/arnavi4.svg" alt="">
+								<img class="block-ztm" src="../../assets/temp/eqview/arnavi4.svg" alt="">
 								<p>Навигационный контроллер ARNAVI 4 ГЛОНАСС/GPS предназначен для дистанционного наблюдения за подвижными объектами и может быть использован совместно с любым совместимым программным комплексом. Для контроля за состоянием автомобиля или установленного на нем оборудования, к устройству могут подключаться цифровые, дискретные, аналоговые и частотно-импульсные датчики. Реализована поддержка CAN шины.
 								</p>
 								<div class="card__button" @click="showarnavi()">Подробнее</div>
@@ -61,7 +61,7 @@
 						<div class="modal " v-if="arnavi" >
 							<div class="modal-content">
 								<div class="modal-block">
-									<img src="../assets/temp/eqview/arnavi4.svg" alt="">
+									<img src="../../assets/temp/eqview/arnavi4.svg" alt="">
 									<span>Навигационный контроллер ARNAVI 4 ГЛОНАСС/GPS</span>
 									<div class="block-text">
 										<p>Предназначен для дистанционного наблюдения за подвижными объектами и может быть использован совместно с любым совместимым программным комплексом. Для контроля за состоянием автомобиля или установленного на нем оборудования, к устройству могут подключаться цифровые, дискретные, аналоговые и частотно-импульсные датчики. Реализована поддержка CAN шины.
@@ -77,7 +77,7 @@
 									<span>Трекер может фиксировать уровень GSM сигнала</span>
 									<p>Идентифицировать базовые станции и достоверность навигационных данных в момент записи каждой координатной точки.</p>
 									<span>ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ ARNAVI 4</span>
-									<img class="arnaviinfo" src="../assets/temp/equipment/arnaviinfo.svg" alt="">
+									<img class="arnaviinfo" src="../../assets/temp/equipment/arnaviinfo.svg" alt="">
 								</div>
 							</div>
 							<div class="modal-close">
@@ -89,7 +89,7 @@
 						<div class="equipment-card">
 							<span>ГЛОНАСС/GPS ОБОРУДОВАНИЕ АРУСНАВИ</span>
 							<div class="card-block">
-								<img src="../assets/temp/eqview/arus.svg" alt="">
+								<img src="../../assets/temp/eqview/arus.svg" alt="">
 								<p>Представляем обновленную версию навигационного контроллера ARUSNAVI. В приборе полностью переработана схемотехника, но как и прежде оставлены защиты от повышенного напряжения, что позволяет использовать прибор на российской автотехнике, механизм заморозки координат на стоянках (отсутствие звезд).
 								</p>
 								<div class="card__button" @click="showarusnavi()">Подробнее</div>
@@ -99,7 +99,7 @@
 						<div class="modal " v-if="arusnavi" >
 							<div class="modal-content">
 								<div class="modal-block">
-									<img class="arus" src="../assets/temp/eqview/arus.svg" alt="">
+									<img class="arus" src="../../assets/temp/eqview/arus.svg" alt="">
 									<span>ГЛОНАСС/GPS ОБОРУДОВАНИЕ АРУСНАВИ</span>
 									<div class="block-text">
 										<p>Представляем обновленную версию навигационного контроллера ARUSNAVI. В приборе полностью переработана схемотехника, но как и прежде оставлены защиты от повышенного напряжения, что позволяет использовать прибор на российской автотехнике, механизм заморозки координат на стоянках (отсутствие звезд).</p>
@@ -165,8 +165,8 @@
 </template>
 
 <script>
-import Header from '../components/Header';
-import Footer from '../components/Footer'
+import Header from '../../components/Header';
+import Footer from '../../components/Footer'
 
 export default {
 	name: "equipment",
@@ -235,8 +235,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "src/assets/scss/variables.scss";
-@import "src/assets/scss/styles.scss";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/styles";
 
 
 main {

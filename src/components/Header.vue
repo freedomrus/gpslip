@@ -14,7 +14,7 @@
 								<router-link to="/glonassequipment" active-class="active activeback">ГЛОНАСС/GPS
 									ОБОРУДОВАНИЕ
 								</router-link>
-								<a href="#">ZTM ОБОРУДОВАНИЕ</a>
+								<router-link to="/ztmequipment" active-class="active activeback">ZTM ОБОРУДОВАНИЕ</router-link>
 								<a href="#">ТЕЛЬТОНИКА</a>
 							</div>
 						</li>
