@@ -117,13 +117,14 @@ html::-webkit-scrollbar-track {
 
 
 	.VueCarousel-slide {
-		width: size(600, 1920) !important;
+		width: min-content !important;
 		height: size(133, 1920) !important;
 		display: flex !important;
 		align-items: center !important;
 		overflow: hidden !important;
 		flex-wrap: nowrap !important;
 		z-index: 1;
+
 
 		img {
 			background: #FFFFFF;
@@ -135,7 +136,7 @@ html::-webkit-scrollbar-track {
 			object-fit: cover;
 			cursor: pointer;
 			transition: all 0.3s;
-			margin: auto;
+			margin: 0;
 		}
 
 		img:hover {

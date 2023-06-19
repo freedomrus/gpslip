@@ -104,8 +104,8 @@
 					<div class="our-partners">
 
 
-						<carousel class="partner-slider" :mouse-drag="true" :perPage="3" :autoplay="false"
-						          :autoplayTimeout="3000" :loop="true"  :navigationEnabled="false">
+						<carousel class="partner-slider" :mouse-drag="true" :perPage="3" :autoplay="true"
+						          :autoplayTimeout="3000" :loop="true"  :navigationEnabled="false" :centerMode="false">
 							<slide>
 								<img class="hooperone" src="../assets/temp/hooperpartenrs/hooperone.png" alt="">
 							</slide>
