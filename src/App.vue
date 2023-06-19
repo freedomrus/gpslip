@@ -4,9 +4,10 @@
 	</div>
 </template>
 <script>
-
+import 'swiper/css';
 import MainView from "@/views/MainView";
-
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 export default {
 	components: {MainView}
 }
@@ -68,39 +69,39 @@ html::-webkit-scrollbar-track {
 
 
 	.VueCarousel-dot-container {
-		width: size(350, 1920) !important;
+		width: size(150, 1920) !important;
 		height: size(50, 1920);
-		display: none;
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 0 !important;
 
 		.VueCarousel-dot {
-			width: size(100, 1920) !important;
-			height: size(5, 1920) !important;
+			width: size(20, 1920) !important;
+			height: size(10, 1920) !important;
 			background-clip: border-box !important;
 			box-sizing: border-box !important;
-			margin-right: size(20, 1920) !important;
+			margin-right: size(10, 1920) !important;
 			border-radius: 5px !important;
 			padding: 0 !important;
 			margin-top: 0 !important;
 			background: #067BCD !important;
-			opacity: 0.4;
+			opacity: 0.2;
 			transition: all 0.2s;
 		}
 
-		.VueCarousel-dot:hover {
-			width: size(100, 1920) !important;
-			height: size(8, 1920) !important;
-			transition: all 0.2s;
-
-		}
-
+		//.VueCarousel-dot:hover {
+		//	width: size(30, 1920) !important;
+		//	height: size(10, 1920) !important;
+		//	transition: all 0.2s;
+		//
+		//}
 
 		.VueCarousel-dot--active {
 			background: #067BCD !important;
 			opacity: 1;
-			height: size(8, 1920) !important;
+			width: size(30, 1920) !important;
+			height: size(10, 1920) !important;
 		}
 	}
 
@@ -112,14 +113,16 @@ html::-webkit-scrollbar-track {
 		justify-content: space-between;
 	}
 
+
+
+
 	.VueCarousel-slide {
-		max-width: size(450, 1920) !important;
+		width: size(600, 1920) !important;
 		height: size(133, 1920) !important;
 		display: flex !important;
 		align-items: center !important;
-		align-content: center;
-		justify-content: center !important;
-		overflow: hidden;
+		overflow: hidden !important;
+		flex-wrap: nowrap !important;
 		z-index: 1;
 
 		img {
@@ -132,15 +135,14 @@ html::-webkit-scrollbar-track {
 			object-fit: cover;
 			cursor: pointer;
 			transition: all 0.3s;
+			margin: auto;
 		}
 
 		img:hover {
 			box-shadow: 2px 5px 5px rgba(6, 123, 205, 0.5);
 			transition: all 0.3s;
 		}
-
-
-		.hooperone, .hoopertwo, .hooperfour, .hooperfive {
+	.hooperone, .hoopertwo, .hooperfour, .hooperfive {
 			width: size(353, 1920);
 			height: size(72, 1920);
 		}
