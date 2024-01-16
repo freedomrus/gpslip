@@ -102,45 +102,24 @@
 				<div class="wrapper-section">
 					<span class="section__title"><span>Н</span>АШИ ПАРТНЁРЫ</span>
 					<div class="our-partners">
-
-
-						<carousel class="partner-slider" :mouse-drag="true" :perPage="3" :autoplay="true"
-						          :autoplayTimeout="3000" :loop="true"  :navigationEnabled="false" :centerMode="false">
-							<slide>
+						<carousel class="partner-slider" :mouse-drag="true" :perPage="1" :autoplay="false"
+						          :autoplayTimeout="3000" :navigationEnabled="false" :centerMode="true" :paginationEnabled="false">
+							<slide class="slide-one">
 								<img class="hooperone" src="../assets/temp/hooperpartenrs/hooperone.png" alt="">
-							</slide>
-							<slide>
 								<img class="hoopertwo" src="../assets/temp/hooperpartenrs/hoopertwo.png" alt="">
-							</slide>
-							<slide>
 								<img class="hooperthree" src="../assets/temp/hooperpartenrs/hooperthree.png" alt="">
-							</slide>
-							<slide>
 								<img class="hooperfour" src="../assets/temp/hooperpartenrs/hooperfour.png" alt="">
 							</slide>
-							<slide>
+							<slide class="slide-two">
 								<img class="hooperfive" src="../assets/temp/hooperpartenrs/hooperfive.png" alt="">
-							</slide>
-							<slide>
 								<img class="hoopersix" src="../assets/temp/hooperpartenrs/hoopersix.png" alt="">
-							</slide>
-							<slide>
 								<img class="hooperseven" src="../assets/temp/hooperpartenrs/hooperseven.png" alt="">
-							</slide>
-							<slide>
 								<img class="hoopereight" src="../assets/temp/hooperpartenrs/hoopereight.png" alt="">
 							</slide>
 							<slide>
-								<img class="hoopernine" src="../assets/temp/hooperpartenrs/hoopernine.png" alt="">
-							</slide>
-							<slide>
+								<img class="hooperenine" src="../assets/temp/hooperpartenrs/hoopernine.png" alt="">
 								<img class="hooperten" src="../assets/temp/hooperpartenrs/hooperten.png" alt="">
-							</slide>
-							<slide>
 								<img class="hoopereleven" src="../assets/temp/hooperpartenrs/hoopereleven.png" alt="">
-							</slide>
-							<slide>
-								<img class="hoopertwelve" src="../assets/temp/hooperpartenrs/hoopertwelve.png" alt="">
 							</slide>
 						</carousel>
 					</div>
@@ -554,6 +533,7 @@ main{
 .our-partners {
 	width: size(1745, 1920);
 	margin: size(40, 1920) auto;
+
 }
 
 

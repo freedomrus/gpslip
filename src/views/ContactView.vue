@@ -36,7 +36,7 @@
 								</div>
 							</div>
 						</div>
-						<iframe class="animated my-animation-class" ref="animatedElement"  src="https://yandex.ru/map-widget/v1/?um=constructor%3A648f7f6119617e491f83827fe303a22db80858822f8b9ae9ac6e2a2495e549d4&amp;source=constructor" frameborder="0"></iframe>
+						<iframe class="animated my-animation-class" ref="animatedElement"  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=130598449312" frameborder="0"></iframe>
 					</div>
 				</div>
 			</section>

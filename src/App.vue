@@ -42,6 +42,10 @@ html::-webkit-scrollbar-track {
 		align-content: center;
 		justify-content: space-between;
 		text-align: center;
+		[title]::after {
+			content: ""; /* Пустое содержимое псевдоэлемента */
+			display: none; /* Скрыть псевдоэлемент */
+		}
 
 		button {
 			position: relative;
@@ -109,7 +113,7 @@ html::-webkit-scrollbar-track {
 	.VueCarousel-wrapper {
 		width: size(1745, 1920);
 		margin: 0 auto;
-		overflow: hidden !important;
+
 		justify-content: space-between;
 	}
 
@@ -121,11 +125,9 @@ html::-webkit-scrollbar-track {
 		height: size(133, 1920) !important;
 		display: flex !important;
 		align-items: center !important;
-		overflow: hidden !important;
-		flex-wrap: nowrap !important;
+		justify-content: space-between !important;
 		z-index: 1;
-
-
+		padding: size(20, 1920);
 		img {
 			background: #FFFFFF;
 			display: flex;
@@ -138,11 +140,11 @@ html::-webkit-scrollbar-track {
 			transition: all 0.3s;
 			margin: 0;
 		}
-
 		img:hover {
 			box-shadow: 2px 5px 5px rgba(6, 123, 205, 0.5);
 			transition: all 0.3s;
 		}
+
 	.hooperone, .hoopertwo, .hooperfour, .hooperfive {
 			width: size(353, 1920);
 			height: size(72, 1920);
@@ -233,6 +235,7 @@ html::-webkit-scrollbar-track {
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 0 !important;
+
 
 		.VueCarousel-dot {
 			width: size(100, 1920) !important;
