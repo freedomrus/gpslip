@@ -1,3 +1,3 @@
-module.exports = {
-  publicPath: '/gpslipdeploy/'
-}
+// module.exports = {
+//   publicPath: '/gpslipdeploy/'
+// }
