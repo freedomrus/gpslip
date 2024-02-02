@@ -11,10 +11,8 @@
 							<router-link to="/equipment" active-class="active">Оборудование</router-link>
 							<img class="header__arrow" src="../assets/temp/Header/arrow.png" alt="">
 							<div class="dropdown-eq">
-								<router-link to="/glonassequipment" active-class="active activeback">ГЛОНАСС/GPS
-									ОБОРУДОВАНИЕ
-								</router-link>
 								<router-link to="/ztmequipment" active-class="active activeback">ZTM ОБОРУДОВАНИЕ</router-link>
+								<router-link to="/glonassequipment" active-class="active activeback">НАВТЕЛЕКОМ ОБОРУДОВАНИЕ</router-link>
 								<a href="#">ТЕЛЬТОНИКА</a>
 							</div>
 						</li>
@@ -141,18 +139,18 @@ header {
 
 .active {
 	color: #E01C22 !important;
-	transition: all 300ms
+	transition: all 50ms
 }
 
 .activeback {
-	transition: all 300ms;
 	border-left: 0 solid white;
+	transition: all 500ms
 }
 
 .activeback:hover {
 	color: white !important;
 	border-left: 5px solid #E01C22;
-	transition: all 300ms
+	transition: all 5ms
 }
 
 .white-header__block {
@@ -191,16 +189,18 @@ header {
 
 .dropdown-eq a {
 	height: size(60, 1920);
-	padding: size(12, 1920) size(16, 1920);
-	display: block;
-	text-align: left;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	text-align: center;
 	font-size: size(18, 1920) !important;
 }
 
 .dropdown-eq a:hover {
 	color: white;
 	background-color: #075985;
-	transition: all 300ms ease-in-out;
+	transition: all 300ms ;
+	border-radius:1%;
 	z-index: 5;
 }
 
@@ -329,7 +329,7 @@ header {
 			font-family: 'PT Sans', sans-serif;
 			@extend %disdirect;
 
-			.header_tittle__main{
+			.header_tittle__main {
 				font-weight: 400;
 				font-size: size(40, 1920);
 				line-height: size(33, 1920);
@@ -373,8 +373,9 @@ header {
 
 		.form-wrapper:hover {
 			transition: all 0.5s;
-			box-shadow: -5px 4px 10px 5px rgba(224, 28, 34, 0.4), 6px -7px 20px rgba(1, 123, 205, 0.6) ;
+			box-shadow: -5px 4px 10px 5px rgba(224, 28, 34, 0.4), 6px -7px 20px rgba(1, 123, 205, 0.6);
 		}
+
 		//6, 123, 205, 0.4
 		//224, 28, 34, 0.4
 		.title-form {
@@ -382,26 +383,26 @@ header {
 			font-weight: 600;
 			font-size: size(60, 1920);
 			line-height: size(65, 1920);
-			color: white ;
+			color: white;
 			transition: all 0.5s;
 		}
 
 		.sendbtn {
-			width: size(300, 1920) ;
-			height: size(50, 1920) ;
-			margin-top: size(30, 1920) ;
-			background: #075985 ;
-			border-radius: 20px ;
-			font-family: 'Montserrat', sans-serif ;
-			font-weight: 700 ;
-			font-size: size(25, 1920) ;
-			line-height: size(26, 1920) ;
-			color: white ;
-			display: flex ;
-			align-items: center ;
-			justify-content: center ;
-			transition: 0.5s ;
-			cursor: pointer ;
+			width: size(300, 1920);
+			height: size(50, 1920);
+			margin-top: size(30, 1920);
+			background: #075985;
+			border-radius: 20px;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: size(25, 1920);
+			line-height: size(26, 1920);
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: 0.5s;
+			cursor: pointer;
 		}
 
 		.sendbtn:hover {
