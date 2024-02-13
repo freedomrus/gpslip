@@ -10,7 +10,7 @@
 							<div class="equipment-card">
 								<span>{{ item.name }}</span>
 								<div class="card-block">
-									<img class="block-ztm" :src="require(`@/assets/temp/eqview/${item.image}`)" alt="">
+									<img class="block-ztm" :src="require(`@/assets/temp/eqview/${item.image}`)" alt="" :style="{ width: item.width + 'vw', height: item.height + 'vw' }">
 									<p>{{ item.description }}</p>
 									<router-link :to="item.path">
 										<div class="card__button">Подробнее</div>
@@ -29,8 +29,8 @@
 
 <script>
 import Header from '../components/Header';
-import Footer from '../components/Footer'
-import equipmentData from '../equipment.json'
+import Footer from '../components/Footer';
+import equipmentData from '../equipment.json';
 import {req} from "vuelidate/lib/validators/common";
 
 export default {
@@ -87,10 +87,16 @@ main {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: size(70, 1920);
+	margin-left: size(25, 1920);
+	margin-right: size(25, 1920);
 
 	span {
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 500;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		justify-content: center;
 		font-size: size(30, 1920);
 		line-height: size(31, 1920);
 		color: #000000;
@@ -101,7 +107,7 @@ main {
 .card-block {
 	width: size(500, 1920);
 	height: size(600, 1920);
-	margin-right: size(50, 1920);
+
 	padding: size(35, 1920) size(54, 1920);
 	background: #FFFFFF;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
@@ -114,7 +120,7 @@ main {
 	transition: 0.3s;
 
 	.block-ztm {
-		height: size(152, 1920);
+
 	}
 	//img {
 	//	width: size(300, 1920);

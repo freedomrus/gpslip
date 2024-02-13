@@ -1,0 +1,15 @@
+
+[
+    {
+      "id": 1,
+      "name": "АБОНЕНТСКИЙ ТЕРМИНАЛ ZTM - OBD",
+      "image": "ztmobd.png",
+      "description": "",
+      "path": "",
+      "width": 5,
+      "height": 7,
+      "shows": false
+    }
+
+
+]
