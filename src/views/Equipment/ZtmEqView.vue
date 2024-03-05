@@ -1,20 +1,32 @@
 <template>
 	<div>
 		<Header/>
+		<div class="modal " v-if="selectedimage" >
+			<div class="modal-content">
+				<div class="modal-block">
+					{{ equipment[+selectedimage].text}}
+				</div>
+			</div>
+		<div class="modal-close">
+			<svg class="modal__close" @click="close()" width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><path d="M4.73317 43.5834L0.416504 39.2667L17.6832 22L0.416504 4.73335L4.73317 0.416687L21.9998 17.6834L39.2665 0.416687L43.5832 4.73335L26.3165 22L43.5832 39.2667L39.2665 43.5834L21.9998 26.3167L4.73317 43.5834Z" fill="black"/>
+			</svg>
+		</div>
+		</div>
 		<main>
 			<section >
 				<div class="wrapper-section">
 					<span class="section-title" >ZTM ОБОРУДОВАНИЕ</span>
-					<div class="equipment" v-for="item in equipment">
+					<div class="equipment" v-for="(item, index) in equipment">
 						<div class="equipment-card">
 							<span>{{ item.name }}</span>
 							<div class="card-block">
 								<img :src="require(`@/assets/temp/eqview/${item.image}`)" alt="" :style="{ width: item.width + 'vw', height: item.height + 'vw' }">
-								<p>{{item.description}} </p>
-								<div class="card__button" @click="shows()">Подробнее</div>
+								<p>{{ item.description }} </p>
+								<div class="card__button" @click="show(index)">Подробнее</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</section>
 		</main>
@@ -34,16 +46,28 @@ export default {
 	},
 	data (){
 		return {
-			equipment: ztmeqviewData
+			equipment: ztmeqviewData,
+			selectedimage: false
 		}
 	},
 
 	watch:{
-
+		selectedimage: function (){
+			if(this.selectedimage){
+				document.body.style.overflow = "hidden"
+				return
+			}
+			document.body.style.overflow = "auto"
+		},
 	},
 
 	methods:  {
-
+		show(index) {
+			this.selectedimage = index.toString();
+		},
+		close(index) {
+			this.selectedimage = false;
+		},
 
 	}
 
